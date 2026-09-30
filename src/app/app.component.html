@@ -1,0 +1,261 @@
+<div class="pagina">
+
+  <div class="cabeçalho">
+
+    <h1 class="cabeçalho-h1">
+      Agenda de Contatos
+    </h1>
+
+    <p>
+      Cadastre, pesquise e organize seus contatos.
+    </p>
+
+  </div>
+
+
+  <div class="cards">
+
+    <div class="card">
+
+      <div class="card-icone">
+        👤
+      </div>
+
+      <h2 class="card-titulo">
+        Novo contato
+      </h2>
+
+
+      <div class="campo">
+
+        <label>
+          Nome *
+        </label>
+
+        <input
+          [(ngModel)]="novoNome"
+          type="text"
+          placeholder="Digite o nome"
+          required
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label>
+          Telefone *
+        </label>
+
+        <input
+          [(ngModel)]="novoTelefone"
+          type="text"
+          placeholder="Digite o telefone"
+          required
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label>
+          E-mail
+        </label>
+
+        <input
+          [(ngModel)]="novoEmail"
+          type="email"
+          placeholder="Digite o e-mail"
+        >
+
+      </div>
+
+      <button
+        class="botao botao-principal"
+        (click)="adicionarContato()"
+      >
+        + Adicionar contato
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-icone">
+        🔎
+      </div>
+
+      <h2 class="card-titulo">
+        Buscar contato
+      </h2>
+
+
+      <div class="campo">
+
+        <label>
+          Pesquisar pelo nome
+        </label>
+
+        <input
+          [(ngModel)]="busca"
+          type="text"
+          placeholder="Digite o nome do contato"
+        >
+
+      </div>
+
+      <button
+        class="botao botao-principal"
+        (click)="pesquisarContato()"
+      >
+        🔎 Pesquisar
+      </button>
+
+      @if (contatosPesquisados.length > 0) {
+
+        @for (contato of contatosPesquisados; track $index) {
+
+          <div class="resultado-contato">
+
+            <strong>
+              {{ contato.nome }}
+            </strong>
+
+            @if (contato.telefone) {
+
+              <p>
+                📞 {{ contato.telefone }}
+              </p>
+
+            }
+
+            @if (contato.email) {
+
+              <p>
+                ✉️ {{ contato.email }}
+              </p>
+
+            }
+
+            @if (contato.favorito) {
+
+              <span class="favorito">
+                ⭐ Favorito
+              </span>
+
+            } @else {
+
+              <span class="nao-favorito">
+                ☆ Não favorito
+              </span>
+
+            }
+
+          </div>
+
+        }
+
+      } @else if (busca) {
+
+        <div class="resultado resultado-negativo">
+
+          <span class="resultado-rotulo">
+            Nenhum contato encontrado.
+          </span>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+  <div class="lista-container">
+
+    <h2>
+      Meus contatos
+    </h2>
+
+
+    @if (listaContatos.length > 0) {
+
+      <div class="lista">
+
+        @for (contato of listaContatos; track $index) {
+
+          <div class="contato">
+
+            <div class="contato-info">
+
+              <h3>
+                {{ contato.nome }}
+              </h3>
+
+              @if (contato.telefone) {
+
+                <p>
+                  📞 {{ contato.telefone }}
+                </p>
+
+              }
+
+              @if (contato.email) {
+
+                <p>
+                  ✉️ {{ contato.email }}
+                </p>
+
+              }
+              @if (contato.favorito) {
+
+                <span class="favorito">
+                  ⭐ Favorito
+                </span>
+
+              } @else {
+
+                <span class="nao-favorito">
+                  ☆ Não favorito
+                </span>
+
+              }
+
+            </div>
+            <div class="contato-acoes">
+
+              <button
+                class="botao botao-favorito"
+                (click)="alterarFavorito($index)"
+              >
+
+                @if (contato.favorito) {
+
+                  Desmarcar favorito
+
+                } @else {
+                  Marcar favorito
+                }
+              </button>
+              <button
+                class="botao botao-remover"
+                (click)="removerLista($index)"
+              >
+                Remover
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="resultado resultado-negativo">
+
+        <span class="resultado-rotulo">
+          Nenhum contato cadastrado.
+        </span>
+
+      </div>
+    }
+  </div>
+
+</div>

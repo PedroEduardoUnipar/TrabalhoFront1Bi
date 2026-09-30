@@ -1,0 +1,50 @@
+:root {
+    --cor-primaria: #4c6fff;
+    --cor-primaria-escura: #3b5bdb;
+    --cor-sucesso: #1f9d55;
+    --cor-erro: #e0433c;
+    --cor-texto: #1f2430;
+    --cor-texto-suave: #6b7280;
+    --cor-fundo: #e6dcf0;
+    --cor-card: #ffffff;
+
+    --borda-raio: 16px;
+
+    --sombra-card:
+        0 10px 30px rgba(31, 36, 48, 0.08);
+
+    --sombra-card-hover:
+        0 16px 40px rgba(31, 36, 48, 0.08);
+
+    --espaco: 1.5rem;
+
+.resultado-contato {
+    margin-top: 1rem;
+
+    background: var(--cor-fundo);
+
+    border-radius: 12px;
+
+    padding: 1rem;
+
+    border-left: 4px solid var(--cor-primaria);
+
+    animation: entrada 0.4s ease both;
+}
+
+.resultado-contato strong {
+    display: block;
+
+    font-size: 1.1rem;
+
+    color: var(--cor-texto);
+
+    margin-bottom: 0.6rem;
+}
+
+.resultado-contato p {
+    margin: 0.3rem 0;
+
+    color: var(--cor-texto-suave);
+}
+}
